@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <title>Booking App</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1 v-text="sitename"></h1>
+            <button v-on:click="showCheckout">
+                <span class="fa-solid fa-cart-shopping"></span>
+                {{itemsInTheCart}}
+                Checkout
+            </button>
+        </header>
+
+</body>
+</html>
