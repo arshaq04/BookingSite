@@ -19,7 +19,55 @@
             </button>
         </header>
 
+        <main>
+            <div v-if="showProduct">
+                <div v-for="product in products">
+                    <div id="product-container gallery">
+                        <figure>
+                            <img class="resize" v-bind:src="product.image" alt="Class logo">
+                        </figure>
         
+                        <p v-text="product.title"></p>
+                        <p v-text="product.description"></p>
+                        <p>Price: £{{product.price}}</p>
+        
+                        <button v-if="cartFull(product)" v-on:click="addToCart(product)">Add to cart</button>
+        
+                        <div v-else>
+                            <button disabled>Add to cart</button>
+                            <span v-else-if="product.stock - cartCount(product.id) < 5">
+                                Only {{ product.stock - cartCount(product.id) }} left!
+                            </span>
+                            <span v-else>Buy Now!</span>
+                        </div>
+        
+                        <div>
+                            <span v-for='n in product.rating'>★</span>
+                            <span v-for='n in 5 - product.rating'>☆</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div v-else>
+                <h2>Welcome to the Checkout Page</h2>
+                <p>
+                    <strong>Name: </strong>
+                    <input type="text" v-model="order.name">
+                </p>
+                <p>
+                    <strong>Tel No: </strong>
+                    <input type="text" v-model="order.phone">
+                    <p v-if="phoneError" style="color: read;">Invalid format!</p>
+                </p>
+        
+                <h3>Order Information</h3>
+                <p><strong>Name: </strong> {{order.name}}</p>
+                <p><strong>Tel No: {{order.phone}}</strong></p>
+        
+                <button v-on:click="submitCheckoutForm">Place Order</button>
+            </div>
+        </main>
         
         
     </div>
