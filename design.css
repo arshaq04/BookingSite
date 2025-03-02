@@ -1,0 +1,101 @@
+/* Resize class for product images */
+.resize {
+    width: 100%;
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Apply global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    background-image: '/assets/background.png';
+}
+
+/* Center the content */
+#app {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Flexbox container for product list */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+    justify-content: center;
+}
+
+/* Each product card */
+.product {
+    flex: 1 1 calc(30% - 20px); /* 3 items per row */
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+/* Product images */
+.product img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Product title */
+.product h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Product description */
+.product p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Add to cart button */
+button {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+    .product {
+        flex: 1 1 calc(45% - 20px); /* 2 items per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        flex: 1 1 100%; /* 1 item per row */
+    }
+}
+
+  
