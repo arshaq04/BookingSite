@@ -46,6 +46,21 @@ new Vue({
         },
         toggleSort: function() {
             this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+        },
+        removeFromCart: function(product) {
+            const index = this.cart.indexOf(product.id);
+            if (index > -1) {
+                this.cart.splice(index, 1);
+                }
+
+            const productInList = this.products.find(p => p.id === product.id);
+            if (productInList) {
+                productInList.stock++;
+            }
+
+            if (this.cart.length === 0) {
+                this.showProduct = true;
+            }
         }
     }, 
     computed: {

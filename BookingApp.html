@@ -54,6 +54,7 @@
                     <li v-for="product in cartItems" :key="product.id">
                         <strong>{{ product.title }}</strong> - £{{ product.price }}  
                         (x{{ product.quantity }})
+                        <button @click="removeFromCart(product)">Remove</button>
                     </li>
                 </ul>                        
                 <p v-if="cart.length === 0">Your cart is empty.</p>
