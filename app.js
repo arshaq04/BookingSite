@@ -57,6 +57,9 @@ new Vue({
                 return this.sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
             };
             return [...this.products].sort(compare);
+        },
+        cartItems: function() {
+            return this.products.filter(product => this.cart.includes(product.id));
         }
     }
 })

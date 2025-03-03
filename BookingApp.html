@@ -49,6 +49,14 @@
         
             <div v-else>
                 <h2>Welcome to the Checkout Page</h2>
+                <h3>Your Cart</h3>
+                <ul>
+                    <li v-for="product in cartItems" :key="product.id">
+                        <strong>{{ product.title }}</strong> - £{{ product.price }}
+                    </li>
+                </ul>          
+                <p v-if="cart.length === 0">Your cart is empty.</p>
+                        
                 <p>
                     <strong>Name: </strong>
                     <input type="text" v-model="order.name">
@@ -58,11 +66,11 @@
                     <input type="text" v-model="order.phone">
                 </p>
                 <p v-if="phoneError" style="color: red;">Invalid format!</p>
-        
+            
                 <h3>Order Information</h3>
                 <p><strong>Name: </strong> {{order.name}}</p>
                 <p><strong>Tel No: {{order.phone}}</strong></p>
-        
+            
                 <button v-on:click="submitCheckoutForm">Place Order</button>
             </div>
         </main>
