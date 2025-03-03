@@ -17,12 +17,14 @@
                 {{itemsInTheCart}}
                 Checkout
             </button>
+            <button v-on:click="toggleSort">Sort by Price</button>
+
         </header>
 
         <main>
             <div v-if="showProduct">
-                <div v-for="product in products">
-                    <div id="product-container gallery">
+                <div v-for="product in sortedProducts">
+                    <div id="product-container" class="gallery">
                         <figure>
                             <img class="resize" v-bind:src="product.image" alt="Class logo">
                         </figure>
@@ -32,15 +34,11 @@
                         <p>Price: £{{product.price}}</p>
         
                         <button v-if="cartFull(product)" v-on:click="addToCart(product)">Add to cart</button>
-        
-                        <div v-else>
-                            <button disabled>Add to cart</button>
-                            <span v-else-if="product.stock - cartCount(product.id) < 5">
-                                Only {{ product.stock - cartCount(product.id) }} left!
-                            </span>
-                            <span v-else>Buy Now!</span>
-                        </div>
-        
+                        <button v-else disabled>Add to cart</button>
+
+                        <span v-if="itemsLeft(product) === 0"> All out!</span>
+                        <span v-else-if="itemsLeft(product) < 5"> Only {{ itemsLeft(product) }} left!</span>
+
                         <div>
                             <span v-for='n in product.rating'>★</span>
                             <span v-for='n in 5 - product.rating'>☆</span>
@@ -58,8 +56,8 @@
                 <p>
                     <strong>Tel No: </strong>
                     <input type="text" v-model="order.phone">
-                    <p v-if="phoneError" style="color: read;">Invalid format!</p>
                 </p>
+                <p v-if="phoneError" style="color: red;">Invalid format!</p>
         
                 <h3>Order Information</h3>
                 <p><strong>Name: </strong> {{order.name}}</p>
