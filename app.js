@@ -58,8 +58,13 @@ new Vue({
             };
             return [...this.products].sort(compare);
         },
-        cartItems: function() {
-            return this.products.filter(product => this.cart.includes(product.id));
+        cartItems() {
+            return this.products
+                .filter(product => this.cart.includes(product.id))
+                .map(product => ({
+                    ...product,
+                    quantity: this.cart.filter(id => id === product.id).length
+                }));
         }
     }
 })

@@ -52,9 +52,10 @@
                 <h3>Your Cart</h3>
                 <ul>
                     <li v-for="product in cartItems" :key="product.id">
-                        <strong>{{ product.title }}</strong> - £{{ product.price }}
+                        <strong>{{ product.title }}</strong> - £{{ product.price }}  
+                        (x{{ product.quantity }})
                     </li>
-                </ul>          
+                </ul>                        
                 <p v-if="cart.length === 0">Your cart is empty.</p>
                         
                 <p>
@@ -63,7 +64,7 @@
                 </p>
                 <p>
                     <strong>Tel No: </strong>
-                    <input type="text" v-model="order.phone">
+                    <input type="number" v-model="order.phone">
                 </p>
                 <p v-if="phoneError" style="color: red;">Invalid format!</p>
             
