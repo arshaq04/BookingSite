@@ -26,7 +26,7 @@
                 <div v-for="product in sortedProducts">
                     <div id="product-container" class="gallery">
                         <figure>
-                            <img class="resize" v-bind:src="product.image" alt="Class logo">
+                            <img class="resize" v-bind:src="getLessonImage(product)" alt="Class logo">
                         </figure>
         
                         <p v-text="product.title"></p>
