@@ -61,6 +61,9 @@ new Vue({
             if (this.cart.length === 0) {
                 this.showProduct = true;
             }
+        },
+        getLessonImage(product) {
+            return `http://localhost:3000/assets/${product.image}`;
         }
     }, 
     computed: {
