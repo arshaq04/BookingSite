@@ -13,7 +13,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
-    background-image: '/assets/background.png';
+    background-image: url('/assets/background.png');
 }
 
 /* Center the content */

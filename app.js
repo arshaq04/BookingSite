@@ -9,7 +9,8 @@ new Vue({
             name: "",
             phone: ""
         },
-        phoneError: false
+        phoneError: false,
+        sortOrder: 'asc'
     },
     methods: {
         showCheckout: function() {
@@ -39,22 +40,23 @@ new Vue({
         },
         submitCheckoutForm: function() {
             alert("Order has been submitted!")
+        },
+        itemsLeft: function(product) {
+            return product.stock - this.cartCount(product.id);
+        },
+        toggleSort: function() {
+            this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
         }
     }, 
     computed: {
         itemsInTheCart: function() {
             return this.cart.length || "";
-        },
-        itemsLeft: function() {
-            return this.product.stock - this.itemsInTheCart;
-        },
+        },    
         sortedProducts: function() {
-            function compare(a, b) {
-                if (a.price < b.price) return 1;
-                if (a.price < b.price) return -1;
-                return 0;
-            }
-            return this.products.sort(compare)
+            let compare = (a, b) => {
+                return this.sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
+            };
+            return [...this.products].sort(compare);
         }
     }
 })

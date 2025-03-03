@@ -73,7 +73,7 @@ let products = [
     },
     {
         id: 9,
-        title7: "Cybersecurity Lesson",
+        title: "Cybersecurity Lesson",
         description: "Learn the basics of networking and the shell CLI. And whitehat hacking demonstrations.",
         price: 20,
         stock: 5,
